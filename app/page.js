@@ -34,6 +34,8 @@ const services = [
   },
 ];
 
+const whatsappLink = "https://wa.me/2348131859297?text=Hello%20Ideas%20Overload%2C%20I%27m%20interested%20in%20your%20services.";
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-slate-950 text-white">
@@ -43,7 +45,9 @@ export default function Home() {
         </a>
 
         <a
-          href="#contact"
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
           className="rounded-full border border-slate-700 px-5 py-2 text-sm hover:border-cyan-400"
         >
           Let's Talk
@@ -157,14 +161,13 @@ export default function Home() {
         </p>
 
         <a
-          href="https://wa.me/"
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-cyan-400 px-7 py-3 font-bold text-slate-950 hover:bg-cyan-300"
         >
           Start a Conversation <ArrowRight size={18} />
         </a>
-        <p className="mt-4 text-sm text-slate-500">
-          We will connect this button to your WhatsApp number later.
-        </p>
       </section>
 
       <footer className="border-t border-slate-800 px-6 py-6 text-center text-sm text-slate-500">
