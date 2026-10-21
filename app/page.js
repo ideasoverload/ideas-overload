@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import {
   Globe,
   Smartphone,
@@ -12,6 +15,8 @@ import {
   GraduationCap,
   Plane,
   BarChart3,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 const whatsappLink =
@@ -79,6 +84,73 @@ const projects = [
   },
 ];
 
+
+const heroSlides = [
+  {
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=85",
+    title: "Websites that make an impression",
+    subtitle: "Build a stronger digital presence.",
+    label: "WEBSITE DEVELOPMENT",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=85",
+    title: "Business systems that simplify work",
+    subtitle: "Keep your operations organised.",
+    label: "BUSINESS MANAGEMENT SYSTEMS",
+  },
+  {
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1400&q=85",
+    title: "Mobile experiences built for people",
+    subtitle: "Useful apps, designed around you.",
+    label: "ANDROID APP DEVELOPMENT",
+  },
+];
+
+function HeroSlider() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActive((current) => (current + 1) % heroSlides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const slide = heroSlides[active];
+  const move = (direction) =>
+    setActive((current) => (current + direction + heroSlides.length) % heroSlides.length);
+
+  return (
+    <div className="relative overflow-hidden rounded-[1.75rem] border border-slate-700/80 bg-slate-900 shadow-2xl shadow-cyan-950/40">
+      <div className="relative h-[360px] sm:h-[440px]">
+        {heroSlides.map((item, index) => (
+          <img
+            key={item.label}
+            src={item.image}
+            alt={item.title}
+            fetchPriority={index === 0 ? "high" : "auto"}
+            className={"absolute inset-0 h-full w-full object-cover transition-opacity duration-700 " + (active === index ? "opacity-100" : "opacity-0")}
+          />
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-slate-950/5" />
+        <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+          <p className="inline-flex rounded-full border border-cyan-300/30 bg-slate-950/60 px-3 py-1.5 text-[10px] font-bold tracking-[0.16em] text-cyan-200 backdrop-blur sm:text-xs">{slide.label}</p>
+          <h2 className="mt-4 max-w-md text-2xl font-black leading-tight sm:text-3xl">{slide.title}</h2>
+          <p className="mt-2 text-sm text-slate-200 sm:text-base">{slide.subtitle}</p>
+          <a href="#portfolio" className="mt-5 inline-flex items-center gap-2 rounded-full bg-cyan-400 px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-cyan-300">Explore our work <ArrowRight size={16} /></a>
+        </div>
+        <button type="button" onClick={() => move(-1)} aria-label="Previous slide" className="absolute left-3 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-slate-950/60 text-white backdrop-blur transition hover:bg-cyan-400 hover:text-slate-950"><ChevronLeft size={21} /></button>
+        <button type="button" onClick={() => move(1)} aria-label="Next slide" className="absolute right-3 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-slate-950/60 text-white backdrop-blur transition hover:bg-cyan-400 hover:text-slate-950"><ChevronRight size={21} /></button>
+        <div className="absolute right-5 top-5 flex gap-2">
+          {heroSlides.map((item, index) => (
+            <button key={item.label} type="button" onClick={() => setActive(index)} aria-label={"Show slide " + (index + 1)} aria-current={active === index ? "true" : undefined} className={"h-2.5 rounded-full transition-all " + (active === index ? "w-7 bg-cyan-300" : "w-2.5 bg-white/70")} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function SectionHeading({ eyebrow, title, description }) {
   return (
     <div className="max-w-2xl">
@@ -134,38 +206,7 @@ export default function Home() {
         </div>
 
         <div className="relative mx-auto w-full max-w-xl">
-          <div className="absolute -inset-8 rounded-full bg-cyan-500/10 blur-3xl" />
-          <div className="relative overflow-hidden rounded-[1.75rem] border border-slate-700/80 bg-slate-900 p-3 shadow-2xl shadow-cyan-950/40">
-            <div className="flex items-center gap-2 border-b border-slate-800 px-3 py-3">
-              <span className="h-2.5 w-2.5 rounded-full bg-rose-400" /><span className="h-2.5 w-2.5 rounded-full bg-amber-300" /><span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
-              <div className="ml-3 rounded-md bg-slate-800 px-3 py-1 text-[10px] text-slate-400">ideasoverload · digital studio</div>
-            </div>
-            <div className="grid gap-3 p-3 sm:grid-cols-[1.15fr_.85fr] sm:p-4">
-              <div className="relative flex min-h-52 flex-col justify-between overflow-hidden rounded-2xl bg-gradient-to-br from-cyan-400/25 via-slate-800 to-indigo-500/20 p-5 sm:min-h-64">
-                <div className="absolute -right-8 -top-8 h-36 w-36 rounded-full border border-cyan-300/20" />
-                <div className="absolute -right-1 top-7 h-24 w-24 rounded-full border border-cyan-300/20" />
-                <div className="relative inline-flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-300/30 bg-slate-950/40 text-cyan-300"><Code2 size={23} /></div>
-                <div className="relative">
-                  <p className="text-xs font-semibold uppercase tracking-widest text-cyan-300">Ideas into action</p>
-                  <h2 className="mt-2 text-2xl font-black leading-tight">Build. Improve. Grow.</h2>
-                  <p className="mt-2 text-sm text-slate-300">Technology that works for you.</p>
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-1">
-                <div className="rounded-2xl border border-slate-800 bg-slate-950 p-4">
-                  <Monitor className="text-cyan-400" size={23} />
-                  <p className="mt-5 text-sm font-bold">Websites</p><p className="mt-1 text-xs leading-5 text-slate-400">Make your business visible.</p>
-                </div>
-                <div className="rounded-2xl border border-slate-800 bg-slate-950 p-4">
-                  <Laptop className="text-cyan-400" size={23} />
-                  <p className="mt-5 text-sm font-bold">Smart systems</p><p className="mt-1 text-xs leading-5 text-slate-400">Make work more manageable.</p>
-                </div>
-              </div>
-            </div>
-            <div className="mx-3 mb-3 flex items-center justify-between rounded-xl border border-slate-800 bg-slate-950/80 px-4 py-3 text-xs">
-              <span className="text-slate-400">Your next idea starts here</span><span className="font-bold text-cyan-300">Let&apos;s build it ↗</span>
-            </div>
-          </div>
+          <HeroSlider />
         </div>
       </section>
 
