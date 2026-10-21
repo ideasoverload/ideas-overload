@@ -169,9 +169,8 @@ export default function Home() {
   return (
     <main className="min-h-screen overflow-hidden bg-slate-950 text-white">
       <header className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8">
-        <a href="#" className="text-xl font-black tracking-tight sm:text-2xl" aria-label="Ideas Overload home">
-          IDEAS<span className="text-cyan-400">OVERLOAD</span>
-          <span className="mt-0.5 block text-[9px] font-semibold uppercase tracking-[0.28em] text-slate-400">Technology · Creativity · Solutions</span>
+        <a href="#" className="block w-44 shrink-0 sm:w-52" aria-label="Ideas Overload home">
+          <img src="/ideas-overload-logo.svg" alt="Ideas Overload — Bigger Thinking. Brighter Possibilities." className="h-auto w-full" />
         </a>
         <nav className="hidden items-center gap-7 text-sm text-slate-300 md:flex">
           <a className="transition hover:text-cyan-300" href="#services">Services</a>
@@ -288,8 +287,8 @@ export default function Home() {
       </section>
 
       <footer className="border-t border-slate-800 px-5 py-7 text-center sm:px-8">
-        <a href="#" className="text-lg font-black">IDEAS<span className="text-cyan-400">OVERLOAD</span></a>
-        <p className="mt-2 text-sm text-slate-500">Technology. Creativity. Solutions.</p>
+        <a href="#" className="mx-auto block w-40" aria-label="Ideas Overload home"><img src="/ideas-overload-logo.svg" alt="Ideas Overload" className="h-auto w-full" /></a>
+        <p className="mt-2 text-sm text-slate-500">Bigger Thinking. Brighter Possibilities.</p>
         <p className="mt-4 text-xs text-slate-600">© {new Date().getFullYear()} Ideas Overload. All rights reserved.</p>
       </footer>
     </main>
