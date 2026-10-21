@@ -141,7 +141,7 @@ function HeroSlider() {
           <p className="inline-flex rounded-full border border-cyan-300/30 bg-slate-950/60 px-3 py-1.5 text-[10px] font-bold tracking-[0.16em] text-cyan-200 backdrop-blur sm:text-xs">{slide.label}</p>
           <h2 className="mt-4 max-w-md text-2xl font-black leading-tight sm:text-3xl">{slide.title}</h2>
           <p className="mt-2 text-sm text-slate-200 sm:text-base">{slide.subtitle}</p>
-          <a href="#portfolio" className="mt-5 inline-flex items-center gap-2 rounded-full bg-cyan-400 px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-cyan-300">Explore our work <ArrowRight size={16} /></a>
+          <a href="/portfolio" className="mt-5 inline-flex items-center gap-2 rounded-full bg-cyan-400 px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-cyan-300">Explore our work <ArrowRight size={16} /></a>
         </div>
         <button type="button" onClick={() => move(-1)} aria-label="Previous slide" className="absolute left-3 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-slate-950/60 text-white backdrop-blur transition hover:bg-cyan-400 hover:text-slate-950"><ChevronLeft size={21} /></button>
         <button type="button" onClick={() => move(1)} aria-label="Next slide" className="absolute right-3 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-slate-950/60 text-white backdrop-blur transition hover:bg-cyan-400 hover:text-slate-950"><ChevronRight size={21} /></button>
@@ -173,9 +173,11 @@ export default function Home() {
           <img src="/ideas-overload-logo.svg" alt="Ideas Overload — Bigger Thinking. Brighter Possibilities." className="h-auto w-full" />
         </a>
         <nav className="hidden items-center gap-7 text-sm text-slate-300 md:flex">
-          <a className="transition hover:text-cyan-300" href="#services">Services</a>
-          <a className="transition hover:text-cyan-300" href="#portfolio">Portfolio</a>
-          <a className="transition hover:text-cyan-300" href="#about">About</a>
+          <a className="transition hover:text-cyan-300" href="/services">Services</a>
+          <a className="transition hover:text-cyan-300" href="/portfolio">Portfolio</a>
+          <a className="transition hover:text-cyan-300" href="/about">About</a>
+          <a className="transition hover:text-cyan-300" href="/blog">Blog</a>
+          <a className="transition hover:text-cyan-300" href="/contact">Contact</a>
         </nav>
         <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-cyan-400/50 px-4 py-2.5 text-sm font-semibold transition hover:bg-cyan-400 hover:text-slate-950 sm:px-5">
           <MessageCircle size={16} /> Let&apos;s Talk
@@ -194,7 +196,7 @@ export default function Home() {
             We turn practical ideas into powerful websites, mobile apps and business systems that help you work smarter and grow with confidence.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#portfolio" className="inline-flex items-center gap-2 rounded-full bg-cyan-400 px-6 py-3.5 font-bold text-slate-950 transition hover:bg-cyan-300">
+            <a href="/portfolio" className="inline-flex items-center gap-2 rounded-full bg-cyan-400 px-6 py-3.5 font-bold text-slate-950 transition hover:bg-cyan-300">
               Explore Our Work <ArrowRight size={18} />
             </a>
             <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-slate-700 px-6 py-3.5 font-semibold transition hover:border-cyan-400">
