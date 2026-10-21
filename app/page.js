@@ -27,24 +27,28 @@ const services = [
     icon: Globe,
     title: "Website Development",
     description: "Professional, responsive websites that build trust and help your business reach more customers.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80",
     number: "01",
   },
   {
     icon: Smartphone,
     title: "Android App Development",
     description: "Useful mobile applications designed around your customers and the way your business works.",
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=900&q=80",
     number: "02",
   },
   {
     icon: Settings,
     title: "Business Management Systems",
     description: "Manage customers, sales, expenses and daily operations with less stress and better visibility.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
     number: "03",
   },
   {
     icon: Lightbulb,
     title: "Innovative ICT Solutions",
     description: "Practical technology support and creative digital solutions for everyday business challenges.",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80",
     number: "04",
   },
 ];
@@ -214,14 +218,18 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <SectionHeading eyebrow="What we do" title="Technology That Works For You" description="From a first website to a custom digital system, we help turn business challenges into practical solutions." />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {services.map(({ icon: Icon, title, description, number }) => (
-              <article key={title} className="group rounded-2xl border border-slate-800 bg-slate-950/80 p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/50">
-                <div className="flex items-center justify-between">
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-400/10 text-cyan-300 transition group-hover:bg-cyan-400 group-hover:text-slate-950"><Icon size={25} /></span>
-                  <span className="text-sm font-bold text-slate-600">{number}</span>
+            {services.map(({ icon: Icon, title, description, image, number }) => (
+              <article key={title} className="group overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/80 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/50">
+                <div className="relative h-36 overflow-hidden bg-slate-800">
+                  <img src={image} alt={title + " visual"} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/10 to-transparent" />
+                  <span className="absolute right-4 top-4 rounded-full border border-white/20 bg-slate-950/70 px-3 py-1 text-xs font-bold text-white backdrop-blur">{number}</span>
                 </div>
-                <h3 className="mt-6 text-lg font-bold">{title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-400">{description}</p>
+                <div className="p-5">
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-400/10 text-cyan-300 transition group-hover:bg-cyan-400 group-hover:text-slate-950"><Icon size={23} /></span>
+                  <h3 className="mt-4 text-lg font-bold">{title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-400">{description}</p>
+                </div>
               </article>
             ))}
           </div>
